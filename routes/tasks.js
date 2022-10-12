@@ -14,7 +14,8 @@ router.post('/add', (req, res) => {
 
     const task = Task({
         task: req.body.task,
-        description: req.body.description
+        description: req.body.description,
+        status: req.body.status
     })
 
     task.save().then(data => {
