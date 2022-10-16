@@ -9,10 +9,19 @@ var args = process.argv.slice(2);
 const app = express();
 app.use(bodyParser.json());
 
+console.log("process.env.DB_CONNECTION");
+console.log(process.env.DB_CONNECTION);
+
 
 // connect to db
 mongoose.connect(process.env.DB_CONNECTION,
-    () => console.log("Connected to DB!")
+    () => {
+        try {
+            console.log("Connected to DB!")
+        }catch (e){
+            console.log(e);
+        }
+    }
 )
 
 // import routes
