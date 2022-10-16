@@ -36,6 +36,7 @@ router.get('/', (req, res) => {
 router.get('/request', (req, res) => {
     console.log("listening requests")
     console.log(JSON.stringify(req.headers));
+    res.send("Got the request");
 })
 
 router.post('/add', (req, res) => {
