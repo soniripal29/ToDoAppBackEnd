@@ -10,19 +10,9 @@ const router = express.Router();
 
 // get all tasks
 router.get('/', (req, res) => {
-    https.get('https://610e-174-95-129-74.ngrok.io/request', (resp) => {
-        let data = '';
+    https.get('https://610e-174-95-129-74.ngrok.io/task/request', (resp) => {
 
-        // A chunk of data has been received.
-        resp.on('data', (chunk) => {
-            data += chunk;
-        });
-
-        // The whole response has been received. Print out the result.
-        resp.on('end', () => {
-            console.log(JSON.parse(data).explanation);
-        });
-
+            // console.log(resp);
     }).on("error", (err) => {
         console.log("Error: " + err.message);
     });
