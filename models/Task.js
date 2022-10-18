@@ -12,6 +12,10 @@ const TaskSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    user:{
+        type: String,
+        required: true
+     },
     status: {
         type: String,
         default: "active",
