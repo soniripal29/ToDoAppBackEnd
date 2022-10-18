@@ -8,26 +8,19 @@ const https = require('https');
 const router = express.Router();
 
 
-// get all tasks
-router.get('/', (req, res) => {
-    https.get('https://610e-174-95-129-74.ngrok.io/task/request', (resp) => {
 
-            // console.log(resp);
-    }).on("error", (err) => {
-        console.log("Error: " + err.message);
-    });
-
-    res.send("adding a task");
-
+router.get('/', async (req, res) => {
+    const tasks = await Task.find({});
+    res.send(tasks);
 })
 
 
 // get all tasks
-router.get('/request', (req, res) => {
-    console.log("listening requests")
-    console.log(JSON.stringify(req.headers));
-    res.send("Got the request");
-})
+// router.get('/request', (req, res) => {
+//     console.log("listening requests")
+//     console.log(JSON.stringify(req.headers));
+//     res.send("Got the request");
+// })
 
 router.post('/add', (req, res) => {
 
