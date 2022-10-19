@@ -14,7 +14,7 @@ const TaskSchema = mongoose.Schema({
     },
     user:{
         type: String,
-        required: true
+        required: false
      },
     status: {
         type: String,
