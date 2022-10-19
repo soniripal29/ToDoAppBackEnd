@@ -1,6 +1,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const cors = require('cors');
+
 require('dotenv/config');
 
 // get port from start script
@@ -9,8 +11,12 @@ var args = process.argv.slice(2);
 const app = express();
 app.use(bodyParser.json());
 
-console.log("process.env.DB_CONNECTION");
-console.log(process.env.DB_CONNECTION);
+const corsOpts = {
+    origin: '*',
+    methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH', 'OPTION'],
+};
+
+app.use(cors(corsOpts));
 
 
 // connect to db
