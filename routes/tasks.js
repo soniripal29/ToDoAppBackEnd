@@ -12,14 +12,17 @@ const corsOpts = {
     allowedHeaders: ['Content-Type',],
 };
 
-app.use(cors(corsOpts));
+var corsOptions = {
+    origin: '*',
+    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
 
-router.get('/', async (req, res) => {
+router.get('/', cors(corsOptions), async (req, res) => {
     const tasks = await Task.find({});
     res.send(tasks);
 })
 
-router.post('/add', (req, res) => {
+router.post('/add', cors(corsOptions), (req, res) => {
 
     const task = Task({
         task: req.body.task,
