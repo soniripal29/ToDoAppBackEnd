@@ -1,26 +1,23 @@
 const express = require('express');
 const Task = require('../models/Task');
 
-const https = require('https');
-
+const cors = require('cors');
 
 
 const router = express.Router();
 
+const corsOpts = {
+    origin: '*',
+    methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH'],
+    allowedHeaders: ['Content-Type',],
+};
 
+app.use(cors(corsOpts));
 
 router.get('/', async (req, res) => {
     const tasks = await Task.find({});
     res.send(tasks);
 })
-
-
-// get all tasks
-// router.get('/request', (req, res) => {
-//     console.log("listening requests")
-//     console.log(JSON.stringify(req.headers));
-//     res.send("Got the request");
-// })
 
 router.post('/add', (req, res) => {
 
