@@ -23,7 +23,7 @@ router.post('/add', (req, res) => {
     task.save().then(data => {
         res.json(data)
     }).catch(err => {
-        res.json({message: err});
+        res.json({ message: err });
     })
 })
 
@@ -32,6 +32,7 @@ router.post('/delete', async (req, res) => {
     await Task.deleteOne({ _id: req.body._id });
 
     console.log(await Task.countDocuments({ _id: req.body._id }));
+    res.json({ message: 'Task deleted successfully' });
 })
 
 module.exports = router;
