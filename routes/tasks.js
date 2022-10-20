@@ -27,4 +27,11 @@ router.post('/add', (req, res) => {
     })
 })
 
+router.post('/delete', async (req, res) => {
+    console.log(await Task.countDocuments({ _id: req.body._id }));
+    await Task.deleteOne({ _id: req.body._id });
+
+    console.log(await Task.countDocuments({ _id: req.body._id }));
+})
+
 module.exports = router;
