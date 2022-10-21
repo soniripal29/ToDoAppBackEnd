@@ -35,4 +35,16 @@ router.post('/delete', async (req, res) => {
     res.json({ message: 'Task deleted successfully' });
 })
 
+
+router.post('/complete', async (req, res) => {
+    await Task.findOneAndUpdate({_id: req.body._id}, {"status": "complete"});
+    res.json({ message: 'Task completed successfully' });
+})
+
+
+router.post('/update', async (req, res) => {
+    await Task.findOneAndUpdate({_id: req.body._id}, {"task": req.body.task, "description": req.body.description});
+    res.json({ message: 'Task updated successfully' });
+})
+
 module.exports = router;
